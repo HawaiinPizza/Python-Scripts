@@ -1,0 +1,20 @@
+{
+        "input" : {
+                "files":[
+                        "/home/zaki/Scripts/DicShort"
+                        ,"/tmp/tmpshorts"
+                ]
+                ,"dirs":[
+                        {"/home/zaki/.local/share/zaki/books/": ".*"}
+
+                ]
+        }
+        ,"output":{
+                "zsh":"/home/zaki/.local/share/bookmarks/zshPath"
+                ,"dmenufm":"/home/zaki/.local/share/bookmarks/dmenuPath"
+                ,"emacs":"/home/zaki/.config/emacs/bookmarks"
+                ,"dmenu":"/home/zaki/.local/share/bookmarks/dmenuBook"
+                ,"fzf":"/home/zaki/.local/share/bookmarks/fzfBook"
+        }
+        
+}

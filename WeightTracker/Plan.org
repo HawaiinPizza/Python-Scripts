@@ -1,0 +1,2 @@
+* TODO Ask for Weight
+* TODO Generate graph on weight, and see how clsoe you match expected 

@@ -1,0 +1,67 @@
+#+TITLE: Todo for prayer-dl
+* Problem Statement
+  Store the times for prayer offline, and able to get the next tiem for prayer
+* Requirements
+** Assumptions
+   - User has internet connection on a regular basis
+   - User will store prayer data onto a folder, and is not supposed to write it directly
+   - User has prayer-dl running either as a daemon or regularly, to be able to get data
+** Specifications
+*** Downloading Prayer
+**** Input	 
+	 - Interval to download prayers :: daily, weekly, monthly, yearly. Assume prayer-dl downlaods up to the next time prayer is needed
+	 - Folder to Store prayers :: Folder which holds all of the prayer times
+**** Output
+	 - Date: Datetime :: Using dictioanry, store each day as a 5 value tuple of datetime, and each is indexed with a date. This allows for any date to be used.
+	 - PickleFile :: File that storse the date:dateimte
+*** Getting next time for prayer
+	- Daemon Mode
+	- Invokign prayer-dl regularly 
+
+* DAG  
+#+begin_src plantuml :file DAG.png
+  title Direct Acylic Graph
+
+  class DL{
+	  -- Configuration --
+	  + TimeSpan
+	  + FilePath
+	  + GetConfig() 
+	  -- Downloader --
+	  + IntervalRequest(TimeSpan) 
+	  Downloads the json request as an interval, and than returns it
+	  + Save(TimeSpan, FilePath)
+	  Parses the IntervalRequest, and than downloads it
+	
+  }
+
+  class Config{
+	  + TimeSpan{Day, TwoDay,  Week, Month}
+	  + FilePath
+	  + City 
+  }
+
+  class Run{
+	  + PrayerMap
+	  -- Stauts Bar --
+	  + getDay(year, month, day)
+	  + nextPrayer(prayer_map)
+	  -- Run_once ---
+	  + DoCommand(cmd) 
+	  Using prayer_map, run commands with time/date
+	  
+  }
+
+  Run <-- DL
+  Run <-- Config
+
+  DL <- Config
+
+#+end_src
+
+#+RESULTS:
+[[file:DAG.png]]
+
+* Tech
+  - API ::  https://prayertimes.date/api/docs/today
+  - City :: https://prayertimes.date/api/docs/cities 

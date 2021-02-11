@@ -1,0 +1,4 @@
+* Features
+  - [ ] Enviroment variables: use some enviorment variables/aliases IN the program, like have =~=
+  - [ ] One-off commands
+  
