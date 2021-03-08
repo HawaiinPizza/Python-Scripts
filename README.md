@@ -11,4 +11,3 @@ A program used that parses in a file of lines `abbrv command/path`
 
 # Minimal Static Site Generator
 
-# /wdg/ project scanner
